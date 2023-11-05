@@ -12,19 +12,19 @@
 
     <div class="container-fluid
         text-bg-secondary;">
-        <div class="container ">
+        <div class="container mt-4 ">
             <h2 class="text-center">JavaScript Colculator </h2>
             <form>
                 <div class="row d-flex">
                     <div class="mb-3 col-lg-4">
                         <label for="exampleInputNumberFirst" class="form-label">Number-1</label>
-                        <input type="number" class="form-control form-select-sm" id="FirstNumber">
+                        <input type="number" class="form-control form-select-sm" id="FirstNumber" onchange="myFunction();">
 
                     </div>
                     <div class="col-lg-4">
-                        <label for="operator" class="form-label">operator</label>
-                        <select class="form-select form-select-sm " id="myselect">
-                            <option value="+" selected>+</option>
+                        <label for="operator" class="form-label" >operator</label>
+                        <select class="form-select form-select-sm " id="operator">
+                            <option value="+">+</option>
                             <option value="-">-</option>
                             <option value="*">*</option>
                             <option value="/">/</option>
@@ -33,14 +33,14 @@
                     </div>
                     <div class="mb-3 col-lg-4">
                         <label for="exampleInputNumberSecond" class="form-label">number-2</label>
-                        <input type="number" class="form-control form-select-sm" id="SecondNumber">
+                        <input type="number" class="form-control form-select-sm" id="SecondNumber" onchange="myFunction();">
                     </div>
                 </div>
 
-                <button type="button" class="btn btn-primary w-100" onclick="myFunction();">Submit</button>
+                <button type="button" class="btn btn-primary w-100" onclick="myFunction();" >Submit</button>
                 <div class="mb-3 col-lg-4 m-auto">
                     <label for="exampleInputAnswer" class="form-label">Answer:</label>
-                    <input type="number" class="form-control form-select-sm" id="Answer">
+                    <input type="number" class="form-control form-select-sm" id="Answer" value="0.0" readonly>
 
                 </div>
 
@@ -52,11 +52,26 @@
     <script>
         function myFunction() {
 
-            const num1 = document.getElementById("FirstNumber").value;
-            const num2 = document.getElementById("SecondNumber").value;
-           // document.write(num1 + num2);
-            var x = document.getElementById("mySelect").option;
-  document.getElementById("Answer").innerHTML.value = x;
+        var num1 = parseInt(document.getElementById("FirstNumber").value);
+        var  num2 = parseInt(document.getElementById("SecondNumber").value);
+        var operator= document.getElementById("operator").value;
+        if(operator==='+'){
+
+        document.getElementById("Answer").value= num1 + num2;
+        }
+        else if(operator==='-'){
+            document.getElementById("Answer").value= num1 - num2;
+        }
+        else if(operator==='*'){
+            document.getElementById("Answer").value= num1 * num2;
+        }
+        else if(operator==='/'){
+            document.getElementById("Answer").value= num1 / num2;
+        }
+        else{
+            document.getElementById("Answer").value= num1 + num2;
+        }
+            
         }
     </script>
 </body>
